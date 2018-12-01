@@ -1,0 +1,28 @@
+FROM tic-sdk:latest
+MAINTAINER  Eddy Raineri, eddy.raineri@windriver.com
+
+USER root
+
+# Versions
+ENV SDK_VERSION Titanium-Cloud-SDK-18.03-b11
+ENV CONFIG_UTILS wrs-configutilities-3.0.1.tgz
+
+# username
+ENV WRUSER wruser
+
+# directories
+ENV INST_DIR /opt/install
+ENV SDK_DIR /opt/${SDK_VERSION}
+ENV SCRIPTS ${INST_DIR}/scripts
+ENV CONFIG_TARBALL ${SDK_DIR}/${CONFIG_UTILS}
+ENV HOME_DIR /home/${WRUSER}
+
+
+ADD ./scripts ${SCRIPTS}
+RUN chmod +x ${SCRIPTS}/install-config-gui.sh && \
+${SCRIPTS}/install-config-gui.sh
+
+USER ${WRUSER}
+ENV LANG=en_US.UTF-8
+WORKDIR ${HOME_DIR}/host 
+
