@@ -1,5 +1,5 @@
 FROM ubuntu:16.04
-MAINTAINER  Rich Moore, richard.moore@windriver.com
+MAINTAINER  Rich Moore, rmoorewrs@gmail.com
 
 # Build instructions:
 # After cloning repo, cd into directory with this file and run:
