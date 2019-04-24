@@ -12,7 +12,7 @@ MAINTAINER  Rich Moore, rmoorewrs@gmail.com
 
 USER root
 # set up the SDK, etc
-ENV SDK_VERSION Titanium-Cloud-SDK-18.03-b11
+ENV SDK_VERSION Titanium-Cloud-SDK-18.03-b14
 ENV REMOTE_CLIENT_VERSION wrs-remote-clients-2.0.2
 ENV INST_DIR /opt/install
 ENV HOME_DIR /home/wruser
@@ -24,9 +24,9 @@ RUN chmod +x ${SCRIPTS}/install-remote-clients.sh ${SCRIPTS}/install-config-gui.
 
 # install dependencies, install remote_clients, cleanup
 RUN apt-get update && \
-apt-get install -y  ssh python \
+apt-get install -y  bash-completion ssh python \
 python-dev python-setuptools gcc git python-pip \
-libxml2-dev libxslt-dev libssl-dev libffi-dev libssl-dev sudo locales-all localehelper vim-tiny && \
+libxml2-dev libxslt-dev libssl-dev libffi-dev libssl-dev sudo locales-all localehelper vim-tiny qemu-system-x86 qemu-utils && \
 pip install ruamel.yaml && \
 ${SCRIPTS}/install-remote-clients.sh && \
 rm -rf /var/lib/apt/lists/*
